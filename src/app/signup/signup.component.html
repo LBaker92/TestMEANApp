@@ -1,0 +1,30 @@
+<form [formGroup]="signupForm"
+(ngSubmit)="signup()"
+class="signup-form">
+  <h1>Create your account</h1>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input matInput
+    formControlName="username"
+    placeholder="coolguy">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput
+    formControlName="password"
+    placeholder="secret123">
+  </mat-form-field>
+
+  <div id="btn-container">
+    <div>
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </div>
+    <button type="submit"
+    [disabled]="!signupForm.valid"
+    mat-button
+    class="btn">Sign-up</button>
+  </div>
+</form>

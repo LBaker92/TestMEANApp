@@ -1,0 +1,44 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "npm start",
+      "name": "Serve Client",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "name": "Start Server",
+      "program": "${workspaceFolder}/server/server.js",
+      "request": "launch",
+      "restart": true,
+      "runtimeExecutable": "nodemon",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}"
+    },
+  ],
+  "compounds": [
+    {
+      "name": "Serve client, start server, launch chrome",
+      "configurations": [
+        "Start Server",
+        "Serve Client",
+        "Launch Chrome against localhost"
+      ]
+    }
+  ]
+}
