@@ -35,10 +35,8 @@ export class LoginComponent implements OnInit {
         this.loginForm.controls.password.value
       )
       .subscribe(
-        (res) => {
-          const user: User = {
-            username: res.username
-          };
+        (res: User) => {
+          const user: User = res;
           localStorage.setItem('user', JSON.stringify(user));
           this.router.navigate(['home']);
         },

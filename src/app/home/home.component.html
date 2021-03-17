@@ -1,4 +1,11 @@
-<h1>Welcome, {{user.username}}!</h1>
+<h1 *ngIf="user.configuration?.showWelcomeMessage">Welcome, {{user.username}}</h1>
+<h2 *ngIf="user.configuration?.showTest1">TEST 1</h2>
+<h2 *ngIf="user.configuration?.showTest2">TEST 2</h2>
+
+<app-config-menu [(user)]="user"></app-config-menu>
+
+<br>
+<br>
 <a id="logout-btn"
 mat-button
 routerLink="/login">"Logout"</a>

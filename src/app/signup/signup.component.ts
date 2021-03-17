@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { User } from '../core/models/user';
-import { LoginService } from '../core/services/login.service';
+import { SignupService } from '../core/services/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService,
+    private signupService: SignupService,
     private router: Router,
     private snackBar: MatSnackBar
   ) {}
@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
   }
 
   signup(): void {
-    this.loginService
+    this.signupService
       .signup(
         this.signupForm.controls.username.value,
         this.signupForm.controls.password.value
@@ -37,9 +37,9 @@ export class SignupComponent implements OnInit {
       .subscribe(
         (res) => {
           const user: User = {
-            username: res.username
+            username: res.username,
           };
-          
+
           localStorage.setItem('user', JSON.stringify(user));
           this.router.navigate(['home']);
         },

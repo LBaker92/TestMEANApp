@@ -1,0 +1,13 @@
+<form [formGroup]="configForm"
+(ngSubmit)="saveConfig()"
+class="config-form">
+
+<mat-checkbox formControlName="showWelcomeMessage">Show welcome message.</mat-checkbox>
+<mat-checkbox formControlName="showTest1">Show first test message.</mat-checkbox>
+<mat-checkbox formControlName="showTest2">Show second test message.</mat-checkbox>
+
+<button type="submit"
+[disabled]="!configForm.valid"
+mat-stroked-button
+class="btn">Save</button>
+</form>

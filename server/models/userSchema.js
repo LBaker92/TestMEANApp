@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userLoginsSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true
@@ -8,10 +8,14 @@ const userLoginsSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  configuration: {
+    type: Object,
+    required: false
   }
 });
 
 const userLoginsDb = mongoose.connection.useDb('testdb');
-const UserLoginInformation = userLoginsDb.model('userlogins', userLoginsSchema);
+const UserTable = userLoginsDb.model('users', userSchema);
 
-module.exports = UserLoginInformation;
+module.exports = UserTable;

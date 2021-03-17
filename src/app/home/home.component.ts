@@ -14,7 +14,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user);
+
+    if (!this.user?.configuration) {
+      this.user.configuration = {
+        showWelcomeMessage: true,
+        showTest1: true,
+        showTest2: true,
+      };
+    }
   }
 
 }

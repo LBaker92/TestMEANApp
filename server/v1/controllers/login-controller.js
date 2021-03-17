@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const UserLoginInformation = require('../../models/user-login');
+const UserCollection = require('../../models/userSchema');
 
 router.post('/login', async (req, res) => {
   if (!areLoginCredentialsValid(req.body)) {
@@ -9,7 +9,7 @@ router.post('/login', async (req, res) => {
       .json({ message: 'The username or password was invalid.' });
   }
 
-  await UserLoginInformation.findOne({
+  await UserCollection.findOne({
     username: req.body.username
   })
     .exec((error, response) => {
